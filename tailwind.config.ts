@@ -24,7 +24,16 @@ export default {
         gallery: "repeat(auto-fit, 250px)",
       },
       backgroundImage: {
-        skeleton: "linear-gradient(90deg, #e0e0e0, #f0f0f0, #e0e0e0)",
+        skeleton: "linear-gradient(90deg, #c0c0c0, #212c35, #c0c0c0)",
+      },
+      animation: {
+        skeletonAnimation: "shimmer 5.5s infinite"
+      },
+      keyframes: {
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
     },
   },

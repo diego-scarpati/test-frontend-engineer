@@ -2,20 +2,28 @@
 
 import RoundedCheckbox from "@/app/common/Checkbox";
 import ProductGallery from "@/app/common/ProductGallery";
-import { fetchAllProducts, fetchCategories } from "@/app/services";
-import { IProduct } from "@/app/types/interfaces";
-import { useEffect, useState } from "react";
+import {
+  getAllProducts,
+  getCategories,
+  loadCartFromLocalStorage,
+} from "@/lib/features/products";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { AppDispatch } from "@/lib/store";
+import { useEffect } from "react";
 
 const page = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
+  const { products, categories } = useAppSelector((state) => state.products);
+  const dispatch: AppDispatch = useAppDispatch();
   useEffect(() => {
-    fetchAllProducts().then((data: IProduct[]) => {
-      setProducts(data);
-    });
-    fetchCategories().then((data: string[]) => {
-      setCategories(data);
-    });
+    const fetchInfo = async () => {
+      const cartOnStorage = localStorage.getItem("cart");
+      if (cartOnStorage) {
+        dispatch(loadCartFromLocalStorage(JSON.parse(cartOnStorage)));
+      }
+      dispatch(getAllProducts());
+      dispatch(getCategories());
+    };
+    fetchInfo();
   }, []);
   return (
     <main className="container bg-secondary mx-auto my-10 min-h-dvh flex flex-col lg:flex-row gap-4 p-8 rounded-lg">
@@ -29,10 +37,10 @@ const page = () => {
               ))
             ) : (
               <>
-                <RoundedCheckbox category="loading" />
-                <RoundedCheckbox category="loading" />
-                <RoundedCheckbox category="loading" />
-                <RoundedCheckbox category="loading" />
+                <div className="bg-skeleton animate-skeletonAnimation bg-[length:200%_100%] rounded-lg w-64 h-5"></div>
+                <div className="bg-skeleton animate-skeletonAnimation bg-[length:200%_100%] rounded-lg w-64 h-5"></div>
+                <div className="bg-skeleton animate-skeletonAnimation bg-[length:200%_100%] rounded-lg w-64 h-5"></div>
+                <div className="bg-skeleton animate-skeletonAnimation bg-[length:200%_100%] rounded-lg w-64 h-5"></div>
               </>
             )}
           </div>

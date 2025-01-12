@@ -12,7 +12,7 @@ const Product = async ({ params }: { params: Promise<{ id: number }> }) => {
 
   return (
     <main className="container mx-auto my-16 min-h-dvh rounded-lg text-text">
-      <div className="container bg-secondary h-auto">
+      <div className="container bg-secondary h-auto rounded-lg">
         <div className="flex justify-start">
           <Link href="/product">
             <div className="flex items-center justify-center mt-8 ml-8 py-2 px-4 w-36 bg-p3green hover:bg-p3greenLight rounded-lg">
@@ -21,7 +21,7 @@ const Product = async ({ params }: { params: Promise<{ id: number }> }) => {
           </Link>
         </div>
         <div className="flex justify-between w-full flex-col lg:flex-row gap-4 p-8">
-          <div className="relative h-80 w-full overflow-y-auto scrollbar-hide rounded-lg overflow-x-hidden">
+          <div className="relative h-auto max-h-[450px] h- w-full overflow-y-auto scrollbar-hide rounded-lg overflow-x-hidden">
             <div className="relative w-full">
               <Image
                 src={product.image}
@@ -34,6 +34,9 @@ const Product = async ({ params }: { params: Promise<{ id: number }> }) => {
                   width: "100%",
                   objectPosition: "top",
                 }}
+                placeholder="blur"
+                blurDataURL="../assets/blur-data-url.png"
+                className="rounded-lg"
               />
             </div>
           </div>
@@ -50,7 +53,7 @@ const Product = async ({ params }: { params: Promise<{ id: number }> }) => {
               </p>
               <p className="font-semibold">{formatCurrency(product.price)}</p>
             </div>
-            <AddToCart />
+            <AddToCart product={product}/>
           </div>
         </div>
       </div>

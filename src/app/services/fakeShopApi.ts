@@ -1,19 +1,14 @@
 // Purpose: To create a service that fetches data from the fake store api
 
-import { IHeaderTitle, IProduct } from "../types/interfaces";
+import { IProduct } from "../types/interfaces";
 
 
 const BASE_URL = "https://fakestoreapi.com";
 
-// fetch('https://fakestoreapi.com/products')
-//             .then(res=>res.json())
-//             .then(json=>console.log(json))
-
-
 ////////////// PRODUCTS //////////////
 
 export const fetchAllProducts = async (): Promise<IProduct[]> => {
-  const response = await fetch(`${BASE_URL}/products?limit=6`);
+  const response = await fetch(`${BASE_URL}/products`);
   const products = await response.json();
   return products;
 };

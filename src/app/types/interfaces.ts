@@ -8,14 +8,27 @@ export interface IProduct {
   rating: {
     rate: number;
     count: number;
-  }
+  };
 }
 
 export interface IHeaderTitle {
   category: string;
 }
 
-export interface ICartItem extends IProduct {
+export interface ICartItem {
+  product: IProduct;
   quantity: number;
-  totalPrice: number;
+}
+
+export interface IInitialProductsState {
+  products: IProduct[];
+  loadingProducts: boolean;
+  selectedProduct: IProduct | null;
+  categories: string[];
+  loadingCategories: boolean;
+  selectedCategories: string[];
+  cart: {
+    items: { [id: number]: ICartItem };
+  };
+  error: string;
 }

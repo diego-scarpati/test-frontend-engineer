@@ -1,3 +1,6 @@
+import { addSelectedCategory } from '@/lib/features/products';
+import { useAppDispatch } from '@/lib/hooks';
+import { AppDispatch } from '@/lib/store';
 import React, { useState } from 'react';
 
 type RoundedCheckboxProps = {
@@ -5,9 +8,11 @@ type RoundedCheckboxProps = {
 }
 
 const RoundedCheckbox = ({category}: RoundedCheckboxProps) => {
+  const dispatch: AppDispatch = useAppDispatch()
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const handleChange = () => {
+    dispatch(addSelectedCategory({category}))
     setIsChecked(!isChecked);
   };
 
