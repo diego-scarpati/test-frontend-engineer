@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { AppDispatch } from "@/lib/store";
 import { useEffect } from "react";
 
-const page = () => {
+const ProductPage = () => {
   const { products, categories } = useAppSelector((state) => state.products);
   const dispatch: AppDispatch = useAppDispatch();
   useEffect(() => {
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProductPage;

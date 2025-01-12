@@ -11,9 +11,6 @@ export interface IProduct {
   };
 }
 
-export interface IHeaderTitle {
-  category: string;
-}
 
 export interface ICartItem {
   product: IProduct;
