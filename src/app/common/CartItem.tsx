@@ -16,7 +16,6 @@ const CartItem = ({ cartItem }: CartItemProps) => {
 
 
   return (
-    // <div className="flex justify-between w-full h-70 bg-primary rounded-lg p-4 text-text">
     <div className="flex justify-between items-center px-1 my-3">
       <div className="flex ml-4 gap-4">
         <Image
@@ -42,7 +41,6 @@ const CartItem = ({ cartItem }: CartItemProps) => {
         </p>
       </div>
     </div>
-    // </div>
   );
 };
 
