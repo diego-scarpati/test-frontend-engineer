@@ -38,7 +38,7 @@ export default function Home() {
         </h2>
         <p className="text-gray-400 leading-relaxed text-justify">
           This test assesses your ability to build a responsive e-commerce
-          application using modern web technologies. You'll leverage the{" "}
+          application using modern web technologies. You will leverage the{" "}
           <strong>Fake Store API</strong> to display products and implement core
           features such as:
         </p>
@@ -48,7 +48,7 @@ export default function Home() {
             scrolling.
           </li>
           <li>
-            Creating a product detail page with an "Add to Cart" functionality.
+            Creating a product detail page with an Add to Cart functionality.
           </li>
           <li>
             Building a shopping cart system with quantity and price management.
